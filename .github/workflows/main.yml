@@ -39,6 +39,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: app_python
-          file: app_python/Dockerfile
+          file: Dockerfile
           push: true
           tags: docker.io/krontimex/moscowtime:1.0
