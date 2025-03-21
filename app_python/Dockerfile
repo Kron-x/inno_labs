@@ -1,16 +1,12 @@
 FROM python:3-alpine
 
-RUN addgroup -S lowuser && adduser -S lowuser -G lowuser
-
 WORKDIR /main
 
-COPY requirements.txt .
+COPY requirements.txt main.py .
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY main.py .
-
-RUN chown -R lowuser:lowuser /main
+RUN addgroup -S lowuser && adduser -S lowuser -G lowuser && \ 
+    chown -R lowuser:lowuser /main && \
+    pip install --no-cache-dir -r requirements.txt
 
 USER lowuser
 
